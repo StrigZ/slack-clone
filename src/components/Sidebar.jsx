@@ -49,7 +49,9 @@ const Sidebar = () => {
       <SidebarOption Icon={Add} addChannelOption title="Add Channel" />
 
       {channels?.docs.map((doc) => {
-        return <SidebarOption key={doc.id} title={doc.data().name} />;
+        return (
+          <SidebarOption key={doc.id} title={doc.data().name} id={doc.id} />
+        );
       })}
     </SidebarContainer>
   );
