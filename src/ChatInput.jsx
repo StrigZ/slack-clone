@@ -3,8 +3,11 @@ import { addDoc, collection, doc, serverTimestamp } from "firebase/firestore";
 import { useState } from "react";
 import styled from "styled-components";
 import { db } from "./firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "./firebase";
 
 const ChatInput = ({ channelName, channelId, chatRef }) => {
+  const [user] = useAuthState(auth);
   const [input, setInput] = useState("");
   const sendMessage = (e) => {
     e.preventDefault();
@@ -17,9 +20,8 @@ const ChatInput = ({ channelName, channelId, chatRef }) => {
     addDoc(collection(messagesDocRef, "messages"), {
       message: input,
       timestamp: serverTimestamp(),
-      user: "Sheesh Kebab Lover",
-      userImage:
-        "https://staticfanpage.akamaized.net/wp-content/uploads/sites/22/2022/03/Seekh-Kebab-1200x675.jpg",
+      user: user.displayName,
+      userImage: user.photoURL,
     });
 
     setInput("");

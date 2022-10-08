@@ -17,9 +17,13 @@ import { useCollection } from "react-firebase-hooks/firestore";
 import styled from "styled-components";
 import { db } from "../firebase";
 import SidebarOption from "./SidebarOption";
-
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../firebase";
+import LoadingPage from "../LoadingPage";
 const Sidebar = () => {
+  const [user] = useAuthState(auth);
   const [channels, loading, error] = useCollection(collection(db, "rooms"));
+
   return (
     <SidebarContainer>
       <SidebarHeader>
@@ -27,7 +31,7 @@ const Sidebar = () => {
           <h2>Sheesh Fam HQ</h2>
           <h3>
             <FiberManualRecord />
-            Jhon Eldenring
+            {user?.displayName}
           </h3>
         </SidebarInfo>
         <Create />

@@ -1,15 +1,19 @@
 import { AccessTime, Help, HelpOutline, Search } from "@mui/icons-material";
 import { Avatar } from "@mui/material";
 import styled from "styled-components";
-
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../firebase";
 const Header = () => {
+  const [user] = useAuthState(auth);
   return (
     <HeaderContainer>
       {/* Header Left */}
       <HeaderLeft>
         <HeaderAvatar
-        //TODO: Add onClick
-        //TODO: Add src
+          //TODO: Add onClick
+          //TODO: Add src
+          src={user?.photoURL}
+          alt={user?.displayName}
         />
         <AccessTime />
       </HeaderLeft>
