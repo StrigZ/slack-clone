@@ -1,1 +1,1 @@
-[Live Preview](slack-clone-d9b7e.web.app)
+[Live Preview](https://slack-clone-d9b7e.web.app)
