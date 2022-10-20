@@ -1,7 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
-import "./App.css";
 import Chat from "./Chat";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
